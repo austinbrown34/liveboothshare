@@ -190,7 +190,7 @@ def get_current_user():
         if not user:
             # Not an existing user so get info
             graph = GraphAPI(result['access_token'])
-            profile = graph.get_object('me/accounts')
+            profile = graph.get_object('me')
             page_access_token = None
             for page in profile['data']:
                 if page['id'] == profile['page_id']:
