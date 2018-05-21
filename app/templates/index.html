@@ -9,9 +9,7 @@
     <a href="/logout" id="logout">Log out</a>
     <script>
     document.getElementById('logout').onclick = function() {
-  FB.logout(function(response) {
-    FB.Auth.setAuthResponse(null, 'unknown')
-  })
+  FB.logout(function(response) {})
 }
 </script>
 
