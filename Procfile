@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath app __init__.app
+web: python run.py
