@@ -106,7 +106,7 @@ def upload_file(video_url, page_id, poster_url, access_token,
     m = MultipartEncoder(
         fields={'description': description,
                 'title': title,
-                'thumb': poster_encoded_string,
+                # 'thumb': poster_encoded_string,
                 'source': (video_file_name, open(local_video_file, 'rb'))}
     )
 
