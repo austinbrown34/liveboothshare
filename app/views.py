@@ -126,6 +126,17 @@ def upload_file(video_url, page_id, poster_url, access_token,
     return facebook_video_id
 
 
+def get_api(cfg):
+    graph = GraphAPI(cfg['access_token'])
+    resp = graph.get_object('me/accounts')
+    page_access_token = None
+    for page in resp['data']:
+        if page['id'] == cfg['page_id']:
+            page_access_token = page['access_token']
+    # graph = GraphAPI(page_access_token)
+    return page_access_token
+
+
 @app.route('/')
 def index():
     # If a user was set in the get_current_user function before the request,
@@ -140,7 +151,8 @@ def index():
 @app.route('/share')
 def share():
     if g.user:
-        upload_file('https://s3.amazonaws.com/livebooth/uploads/767F69CE-9640-4C38-9C69-B6CA84686300.mov', 'me', 'http://livebooth.xyz/img/phone-black.png', g.user['access_token'],
+        token = get_api(g.user)
+        upload_file('https://s3.amazonaws.com/livebooth/uploads/767F69CE-9640-4C38-9C69-B6CA84686300.mov', 'me', 'http://livebooth.xyz/img/phone-black.png', token,
                     "Live Booth", "Live Booth")
         return render_template('index.html', app_id=FB_APP_ID,
                                app_name=FB_APP_NAME, user=g.user)
@@ -191,12 +203,12 @@ def get_current_user():
             # Not an existing user so get info
             graph = GraphAPI(result['access_token'])
             profile = graph.get_object('me')
-            resp = graph.get_object('me/accounts')
-            page_access_token = None
-            for page in resp['data']:
-                if page['id'] == result['page_id']:
-                    page_access_token = page['access_token']
-                    graph = GraphAPI(page_access_token)
+            # resp = graph.get_object('me/accounts')
+            # page_access_token = None
+            # for page in resp['data']:
+            #     if page['id'] == result['page_id']:
+            #         page_access_token = page['access_token']
+            #         graph = GraphAPI(page_access_token)
             if 'link' not in profile:
                 profile['link'] = ""
 
