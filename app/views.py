@@ -24,7 +24,7 @@ def download_file_to_tmp(source_url):
     tmp_location = "/tmp/s3_downloads"
 
     # come up with a random name to avoid clashes.
-    rand_name = str(uuid.uuid4().get_hex().lower()[0:6])
+    rand_name = str(uuid.uuid4().hex.lower()[0:6])
 
     local_filename = source_url.split('/')[-1]
 
