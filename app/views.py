@@ -141,7 +141,7 @@ def index():
 def share():
     if g.user:
         upload_file('https://s3.amazonaws.com/livebooth/uploads/767F69CE-9640-4C38-9C69-B6CA84686300.mov', 'me', 'http://livebooth.xyz/img/phone-black.png', g.user.access_token,
-                    "Live Booth", "Live Booth"):
+                    "Live Booth", "Live Booth")
         return render_template('index.html', app_id=FB_APP_ID,
                                app_name=FB_APP_NAME, user=g.user)
     # Otherwise, a user is not logged in.
