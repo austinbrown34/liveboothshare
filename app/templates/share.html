@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Live Booth</title>
+    <!-- meta info -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="Live Booth" />
+    <meta name="description" content="Live Booth">
+    <meta name="author" content="Austin Brown">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="/static/css/boostrap.css">
+    <!-- Font Awesome styles (icons) -->
+    <link rel="stylesheet" href="/static/css/font_awesome.css">
+    <!-- Main Template styles -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- IE 8 Fallback -->
+    <!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="/static/css/ie.css" />
+<![endif]-->
+
+    <!-- Your custom styles (blank file) -->
+    <link rel="stylesheet" href="/static/css/mystyles.css">
+
+
+</head>
+
+<body>
+
+
+  <div class="global-wrap">
+    <header class="main">
+
+    </header>
+<div class="gap"></div>
+<div class="gap"></div>
+
+  <!-- LOGIN REGISTER LINKS CONTENT -->
+  <div id="login-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+      <i class="fa fa-sign-in dialog-icon"></i>
+      <h3>Social Shareable GIF</h3>
+      <h5>Your social friendly GIF is just a click away!</h5>
+      <form class="dialog-form">
+          <div class="form-group">
+              <label>E-mail</label>
+              <input type="text" placeholder="email@domain.com" class="form-control">
+          </div>
+          <!-- <div class="form-group">
+              <label>Password</label>
+              <input type="password" placeholder="My secret password" class="form-control">
+          </div>
+          <div class="checkbox">
+              <label>
+                  <input type="checkbox">Remember me
+              </label>
+          </div> -->
+          <input type="submit" value="Submit" class="btn btn-primary">
+      </form>
+      <!-- <ul class="dialog-alt-links">
+          <li><a class="popup-text" href="#register-dialog" data-effect="mfp-zoom-out">Not member yet</a>
+          </li>
+          <li><a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">Forgot password</a>
+          </li>
+      </ul> -->
+  </div>
+
+
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div id="review-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+                        <h3>Add a Review</h3>
+                        <form>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" placeholder="e.g. John Doe" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input type="text" placeholder="e.g. jogndoe@gmail.com" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Review</label>
+                                <textarea class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Rating</label>
+                                <ul class="icon-list icon-list-inline star-rating" id="star-rating">
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Submit" />
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+
+                              {% if type != "GIF" and type != "JPG" and type != "PNG" %}
+                              <div >
+                              <video width="100%" height="100%" controls>
+                                <source src="https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}" type="video/mp4">
+
+                              Your browser does not support the video tag.
+                              </video>
+                            </div>
+                              {% else %}
+                              <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
+                                <img src="https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}" style="width: 800px; height: 600px;" alt="Live Booth" title="Live Booth" />
+                              </div>
+                              {% endif %}
+                                <!-- <img src="/static/img/800x600.png" alt="Image Alternative text" title="AMaze" />
+                                <img src="/static/img/800x600.png" alt="Image Alternative text" title="Urbex Esch/Lux with Laney and Laaaaag" />
+                                <img src="/static/img/800x600.png" alt="Image Alternative text" title="Food is Pride" /> -->
+
+                        </div>
+                        <div class="col-md-5">
+                            <div class="product-info box">
+                                <!-- <ul class="icon-group icon-list-rating text-color" title="4.5/5 rating">
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><i class="fa fa-star-half-empty"></i>
+                                    </li>
+                                </ul>	<small><a href="#" class="text-muted">based on 8 reviews</a></small> -->
+                                <h3>Your Live Booth Content</h3>
+                                <p class="product-info-price" style="font-size: 30px;text-align: center;">{{type}}</p>
+                                <p class="text-smaller text-muted">Thanks for using Live Booth!  We hope you enjoyed your event and have something great to share.</p>
+                                {% if type == "GIF" %}
+                                <p class="text-smaller text-muted">To share this GIF on your social networks, click the share button below and provide an email address we can send a shareable social version of this GIF!</p>
+                                {% endif %}
+                                <!-- <ul class="icon-list list-space product-info-list">
+                                    <li><i class="fa fa-check"></i>Maecenas montes</li>
+                                    <li><i class="fa fa-check"></i>Nulla ullamcorper</li>
+                                    <li><i class="fa fa-check"></i>Ac curabitur</li>
+                                    <li><i class="fa fa-check"></i>Quis quis</li>
+                                    <li><i class="fa fa-check"></i>Ut senectus</li>
+                                </ul> -->
+                                <hr>
+                                <ul class="list-inline" style="text-align:center;">
+                                  {% if type == "GIF" %}
+                                  <!-- <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Sign in</a></li> -->
+                                    <li><a href="#login-dialog" data-effect="mfp-move-from-top" class="btn btn-primary popup-text"><i class="fa fa-share"></i> Get Shareable GIF</a>
+                                    </li>
+                                    {% endif %}
+                                    <!-- <li><a href="#" class="btn"><i class="fa fa-star"></i> To Wishlist</a>
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gap"></div>
+
+
+                </div>
+            </div>
+            </div>
+<footer class="main">
+
+</footer>
+
+        <!-- //////////////////////////////////
+	//////////////END PAGE CONTENT/////////
+	////////////////////////////////////-->
+
+
+
+        <!-- //////////////////////////////////
+	//////////////MAIN FOOTER//////////////
+	////////////////////////////////////-->
+
+
+        <!-- //////////////////////////////////
+	//////////////END MAIN  FOOTER/////////
+	////////////////////////////////////-->
+
+
+
+        <!-- Scripts queries -->
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/boostrap.min.js"></script>
+        <script src="/static/js/countdown.min.js"></script>
+        <script src="/static/js/flexnav.min.js"></script>
+        <script src="/static/js/magnific.js"></script>
+        <script src="/static/js/tweet.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="/static/js/fitvids.min.js"></script>
+        <script src="/static/js/mail.min.js"></script>
+        <script src="/static/js/ionrangeslider.js"></script>
+        <script src="/static/js/icheck.js"></script>
+        <script src="/static/js/fotorama.js"></script>
+        <script src="/static/js/card-payment.js"></script>
+        <script src="/static/js/owl-carousel.js"></script>
+        <script src="/static/js/masonry.js"></script>
+        <script src="/static/js/nicescroll.js"></script>
+
+        <!-- Custom scripts -->
+        <script src="/static/js/custom.js"></script>
+    </div>
+</body>
+
+</html>

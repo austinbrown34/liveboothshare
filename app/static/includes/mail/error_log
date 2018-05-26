@@ -1,0 +1,1 @@
+[24-Dec-2016 08:06:51 America/Chicago] PHP Fatal error:  Call to undefined function email_validate() in /home/austinbrown34/public_html/rafflie.com/static/includes/mail/index.php on line 13
