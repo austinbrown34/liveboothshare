@@ -10,22 +10,21 @@
     <meta name="author" content="Austin Brown">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <!-- Bootstrap styles -->
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/boostrap.css') }}">
+    <link rel="stylesheet" href="/static/css/boostrap.css">
     <!-- Font Awesome styles (icons) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/font_awesome.css') }}">
+    <link rel="stylesheet" href="/static/css/font_awesome.css">
     <!-- Main Template styles -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <!-- IE 8 Fallback -->
     <!--[if lt IE 9]>
 	<link rel="stylesheet" type="text/css" href="/static/css/ie.css" />
 <![endif]-->
 
     <!-- Your custom styles (blank file) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyles.css') }}">
+    <link rel="stylesheet" href="/static/css/mystyles.css">
 
 
 </head>
@@ -45,11 +44,10 @@
       <i class="fa fa-sign-in dialog-icon"></i>
       <h3>Social Shareable GIF</h3>
       <h5>Your social friendly GIF is just a click away!</h5>
-      <form class="dialog-form" action="{{ url_for('convert') }}" method="post">
+      <form class="dialog-form">
           <div class="form-group">
               <label>E-mail</label>
-              <input name="url" type="hidden" value="{{content_folder}}/{{content_key}}">
-              <input name="email" type="text" placeholder="email@domain.com" class="form-control">
+              <input type="text" placeholder="email@domain.com" class="form-control">
           </div>
           <!-- <div class="form-group">
               <label>Password</label>
@@ -61,7 +59,7 @@
               </label>
           </div> -->
           <div class="form-group" style="text-align: center;">
-          <input id="emailsubmit" type="submit" value="Submit" class="btn btn-primary">
+          <input type="submit" value="Submit" class="btn btn-primary">
         </div>
       </form>
       <!-- <ul class="dialog-alt-links">
@@ -168,9 +166,8 @@
                                     <li><a href="#login-dialog" data-effect="mfp-move-from-top" class="btn btn-primary popup-text"><i class="fa fa-share"></i> Get Shareable GIF</a>
                                     </li>
                                     {% endif %}
-
-                                    <li style="padding-top:20px;"><a id="download" href={{ url_for('download', content_folder=content_folder, content_key=content_key) }} class="btn "><i class="fa fa-download"></i> Download {{type}}</a>
-                                    </li>
+                                    <!-- <li><a href="#" class="btn"><i class="fa fa-star"></i> To Wishlist</a>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -182,7 +179,7 @@
             </div>
             </div>
 <footer class="main">
-<iframe id="my_iframe" style="display:none;"></iframe>
+
 </footer>
 
         <!-- //////////////////////////////////
@@ -203,72 +200,25 @@
 
 
         <!-- Scripts queries -->
-
-        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-        <script>
-        // $('#download').on('click', function() {
-// $('<form></form>')
-//   .attr(
-//     'action',
-//     'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
-//   )
-//   .appendTo('body')
-//   .submit()
-//   .remove()
-//   var a = document.createElement('a')
-//   a.href =
-//     'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
-//   a.download =
-//     'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
-//   document.body.appendChild(a)
-//   a.click()
-//   document.body.removeChild(a)
-// })
-// $('#emailsubmit').click(function(e) {
-//   var data = JSON.stringify({
-//     email: $('#emailaddy').val(),
-//     url: 'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
-//   })
-//   // $.post(
-//   //   'https://khr9zw6byi.execute-api.us-west-2.amazonaws.com/dev/v1/convert',
-//   //   data,
-//   //   function(data, status) {
-//   //     console.log('Data: ' + data + '\nStatus: ' + status)
-//   //   }
-//   // )
-//   $.ajax({
-//     url: '/convert',
-//     type: 'POST',
-//     dataType: 'json',
-//     data: data,
-//     success: function(data, textStatus, jqXHR) {
-//       console.log('success')
-//     },
-//     error: function(jqXHR, textStatus, errorThrown) {
-//       console.log(errorThrown)
-//       console.log(textStatus)
-//     }
-//   })
-// })
-</script>
-        <script src="{{ url_for('static', filename='js/boostrap.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/countdown.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/flexnav.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/magnific.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/tweet.min.js') }}"></script>
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/boostrap.min.js"></script>
+        <script src="/static/js/countdown.min.js"></script>
+        <script src="/static/js/flexnav.min.js"></script>
+        <script src="/static/js/magnific.js"></script>
+        <script src="/static/js/tweet.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-        <script src="{{ url_for('static', filename='js/fitvids.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/mail.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/ionrangeslider.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/icheck.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/fotorama.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/card-payment.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/owl-carousel.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/masonry.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/nicescroll.js') }}"></script>
+        <script src="/static/js/fitvids.min.js"></script>
+        <script src="/static/js/mail.min.js"></script>
+        <script src="/static/js/ionrangeslider.js"></script>
+        <script src="/static/js/icheck.js"></script>
+        <script src="/static/js/fotorama.js"></script>
+        <script src="/static/js/card-payment.js"></script>
+        <script src="/static/js/owl-carousel.js"></script>
+        <script src="/static/js/masonry.js"></script>
+        <script src="/static/js/nicescroll.js"></script>
 
         <!-- Custom scripts -->
-        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+        <script src="/static/js/custom.js"></script>
     </div>
 </body>
 
