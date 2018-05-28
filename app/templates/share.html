@@ -168,8 +168,8 @@
                                     <li><a href="#login-dialog" data-effect="mfp-move-from-top" class="btn btn-primary popup-text"><i class="fa fa-share"></i> Get Shareable GIF</a>
                                     </li>
                                     {% endif %}
-
-                                    <li style="padding-top:20px;"><a id="download" href={{ url_for('download', content_folder=content_folder, content_key=content_key) }} class="btn "><i class="fa fa-download"></i> Download {{type}}</a>
+                                    <li style="padding-top:20px;"><a id="download" href="#" class="btn "><i class="fa fa-download"></i> Download {{type}}</a>
+                                    <!-- <li style="padding-top:20px;"><a id="download" href={{ url_for('download', content_folder=content_folder, content_key=content_key) }} class="btn "><i class="fa fa-download"></i> Download {{type}}</a> -->
                                     </li>
                                 </ul>
                             </div>
@@ -206,24 +206,24 @@
 
         <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
         <script>
-        // $('#download').on('click', function() {
-// $('<form></form>')
-//   .attr(
-//     'action',
-//     'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
-//   )
-//   .appendTo('body')
-//   .submit()
-//   .remove()
-//   var a = document.createElement('a')
-//   a.href =
-//     'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
-//   a.download =
-//     'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
-//   document.body.appendChild(a)
-//   a.click()
-//   document.body.removeChild(a)
-// })
+        $('#download').on('click', function() {
+  $('<form></form>')
+    .attr(
+      'action',
+      'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
+    )
+    .appendTo('body')
+    .submit()
+    .remove()
+  var a = document.createElement('a')
+  a.href =
+    'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
+  a.download =
+    'https://s3.amazonaws.com/livebooth/{{content_folder}}/{{content_key}}'
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+})
 // $('#emailsubmit').click(function(e) {
 //   var data = JSON.stringify({
 //     email: $('#emailaddy').val(),
