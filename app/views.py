@@ -28,11 +28,11 @@ def convert():
     # endpoint = url.split('https://s3.amazonaws.com/livebooth/')[1]
     status = ''
     with requests.Session() as session:
-        r = session.post('https://khr9zw6byi.execute-api.us-west-2.amazonaws.com/dev/v1/convert', json={"url": url, "email": email}, verify=False)
+        r = session.post('https://transcoder.livebooth.xyz/v1/convert', json={"url": url, "email": email}, verify=False)
         status = r.status_code
     # r = requests.post('https://khr9zw6byi.execute-api.us-west-2.amazonaws.com/dev/v1/convert', json={"url": url, "email": email})
     # return redirect(url_for('share/{}'.format(endpoint)))
-    return redirect('/dev/share/{}'.format(url), code=302)
+    return redirect('/share/{}'.format(url), code=302)
 
 
 @app.route('/download/<content_folder>/<content_key>')
